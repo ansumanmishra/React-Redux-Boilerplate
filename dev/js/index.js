@@ -1,18 +1,15 @@
 import 'babel-polyfill';
 import React from 'react';
-import ReactDOM from "react-dom";
+import ReactDOM from 'react-dom';
 import {Provider} from 'react-redux';
-import {createStore, applyMiddleware} from 'redux';
-import thunk from 'redux-thunk';
-import promise from 'redux-promise';
-import createLogger from 'redux-logger';
-import allReducers from './reducers';
-import App from './components/App';
+import {createStore} from 'redux';
 
-const logger = createLogger();
+import allReducer from './reducers.js';
+
+import App from './app/app';
+
 const store = createStore(
-    allReducers,
-    applyMiddleware(thunk, promise, logger)
+    allReducer
 );
 
 ReactDOM.render(
