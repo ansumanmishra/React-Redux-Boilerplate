@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 
-import Header from '../header/header'
+import Header from '../layout/header';
+import Footer from '../layout/footer';
 import Listuser from '../user/listuser';
 
 class App extends Component {
@@ -9,6 +10,7 @@ class App extends Component {
             <div className="container">
                 <Header />
                 <Listuser />
+                <Footer />
             </div>
         );
     }

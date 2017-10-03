@@ -10,19 +10,28 @@ class AddUser extends React.Component {
             place = this.refs.place.value,
             id = _.random(100, 1000);
 
-        this.props.addUser({name, place, id});
+        if(name && place) {
+            this.props.addUser({name, place, id});
 
-        this.refs.name.value = '';
-        this.refs.place.value = '';
+            this.refs.name.value = '';
+            this.refs.place.value = '';
+        }
     }
 
     render() {
         return(
             <div>
+                <h1>Add User</h1>
                 <form onSubmit={this.saveUser.bind(this)}>
-                    <input type="text" ref="name" /> <br/>
-                    <input type="text" ref="place" /> <br/>
-                    <button type="submit"> Add User</button>
+                    <div className="form-group">
+                        <input type="text" ref="name" placeholder="Enter name" className="form-control"/>
+                    </div>
+                    <div className="form-group">
+                        <input type="text" ref="place" placeholder="Enter place" className="form-control"/>
+                    </div>
+                    <div className="form-group">
+                        <button type="submit" className="btn btn-primary"> Add User</button>
+                    </div>
                 </form>
             </div>
         );

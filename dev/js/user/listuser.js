@@ -7,12 +7,14 @@ import _ from 'lodash';
 
 import AddUser from './addUser.js';
 
+import './user.scss';
+
 class Listuser extends React.Component {
     listUser() {
         var userList = this.props.users;
 
         return userList.map( (user, index) => {
-            return <li key={index}>{user.id}. {user.name} - {user.place} <button id={user.id} onClick={this.deleteUser.bind(this)}>X</button></li>
+            return <li className="list-group-item" key={index}>{user.id}. {user.name} - {user.place} <button id={user.id} className="btn btn-danger" onClick={this.deleteUser.bind(this)}>X</button></li>
         });
     }
     saveUser(e) {
@@ -32,9 +34,9 @@ class Listuser extends React.Component {
     }
     render() {
         return(
-            <div>
+            <div className="container">
                 <AddUser />
-                <ul>
+                <ul className="list-group">
                     {this.listUser()}
                 </ul>
             </div>
