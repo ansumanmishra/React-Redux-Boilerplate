@@ -2,7 +2,8 @@ import React, {Component} from 'react';
 
 import Header from '../layout/header';
 import Footer from '../layout/footer';
-import Listuser from '../user/listuser';
+import Listuser from '../user/user_container';
+import Post from '../post/post';
 
 class App extends Component {
     render() {
@@ -10,6 +11,7 @@ class App extends Component {
             <div className="container">
                 <Header />
                 <Listuser />
+                <Post />
                 <Footer />
             </div>
         );

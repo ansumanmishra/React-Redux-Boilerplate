@@ -1,15 +1,4 @@
-    let userList = [{
-        'name': 'Ansuman',
-        'place': 'Bhubaneswar',
-        'id': 1
-    },
-    {
-        'name': 'abc',
-        'place': 'delhi',
-        'id': 2
-    }];
-
-const userReducer = (state=userList, action) => {
+const userReducer = (state="", action) => {
     switch (action.type) {
         case "ADD_USER":
             return [
@@ -26,6 +15,10 @@ const userReducer = (state=userList, action) => {
             return state.filter(userList =>
                 userList.id !== parseInt(action.payload)
             )
+        break;
+
+        case "RESOLVED_GET_USERS":
+            return action.data;
         break;
     }
     return state;

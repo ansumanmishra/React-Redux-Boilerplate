@@ -1,20 +1,19 @@
 import React from 'react';
 
-import {connect} from 'react-redux';
-import {deleteUser} from './userActions.js';
-
 import _ from 'lodash';
 
-import AddUser from './addUser.js';
-
-import './user.scss';
+import AddUser from './adduser_component';
 
 class Listuser extends React.Component {
     listUser() {
         var userList = this.props.users;
-
+        if(!userList) {
+            return;
+        }
         return userList.map( (user, index) => {
-            return <li className="list-group-item" key={index}>{user.id}. {user.name} - {user.place} <button id={user.id} className="btn btn-danger" onClick={this.deleteUser.bind(this)}>X</button></li>
+            return <li className="list-group-item" key={index}>{user.id}. {user.name} - {user.place} 
+                        &nbsp; <button className="btn btn-danger" id={user.id} onClick={this.deleteUser.bind(this)}>X</button>
+                    </li>
         });
     }
     saveUser(e) {
@@ -32,10 +31,14 @@ class Listuser extends React.Component {
         e.preventDefault();
         this.props.deleteUser(e.target.id);
     }
+    componentWillMount() {
+        this.props.getUsers();
+    }
     render() {
         return(
-            <div className="container">
-                <AddUser />
+            <div>
+                <AddUser addUser={this.props.addUser}/>
+                <h2>Users List (Async Data) </h2>
                 <ul className="list-group">
                     {this.listUser()}
                 </ul>
@@ -44,12 +47,4 @@ class Listuser extends React.Component {
     }
 }
 
-const mapStateToProps = (state) => {
-    return {
-        users: state.users
-    };
-}
-
-const mapDispatch = {deleteUser};
-
-export default connect(mapStateToProps, mapDispatch)(Listuser);
+export default Listuser;

@@ -1,8 +1,5 @@
 import React from 'react';
 
-import {connect} from 'react-redux';
-import {addUser} from './userActions.js';
-
 class AddUser extends React.Component {
     saveUser(e) {
         e.preventDefault();
@@ -38,12 +35,4 @@ class AddUser extends React.Component {
     }
 }
 
-const mapStateToProps = (state) => {
-    return {
-        users: state.users
-    };
-}
-
-const mapDispatch = {addUser};
-
-export default connect(mapStateToProps, mapDispatch)(AddUser);
+export default AddUser;
